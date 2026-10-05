@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Say yes to being my world 💗</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&family=Pacifico&display=swap');
+
+:root{
+  --paper:#fff7f5;
+  --pink:#e98b9e;
+  --deep:#884b5b;
+  --ink:#5c3c46;
+  --line:#c58d98;
+  --soft:#f7dfe3;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0; min-height:100vh; color:var(--ink);
+  font-family:"Be Vietnam Pro",sans-serif;
+  background:
+    radial-gradient(circle at 10% 10%,#f6cfd6 0 4%,transparent 22%),
+    radial-gradient(circle at 90% 85%,#f7d8cc 0 5%,transparent 25%),
+    repeating-linear-gradient(0deg,rgba(160,100,110,.025) 0 1px,transparent 1px 5px),
+    var(--paper);
+}
+body:before,body:after{
+  content:"✦"; position:fixed; color:#d98295; opacity:.18;
+  font-size:100px; pointer-events:none; z-index:-1;
+}
+body:before{left:2%;top:12%}
+body:after{right:3%;bottom:12%;font-size:130px}
+
+.shell{width:min(1080px,100%);margin:auto;min-height:100vh}
+.page{
+  min-height:100vh; padding:70px 28px 110px;
+  display:none; align-items:center; justify-content:center;
+  position:relative; overflow:hidden;
+}
+.page.active{display:flex;animation:pageIn .55s ease}
+@keyframes pageIn{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+
+.paper-card{
+  width:min(850px,100%); background:rgba(255,250,248,.8);
+  border:1px solid #e5c1c8; box-shadow:0 20px 70px rgba(120,70,80,.12);
+  position:relative;
+}
+.paper-card:before{
+  content:"";position:absolute;inset:10px;border:1px solid #dfb1ba;
+  pointer-events:none;
+}
+.cover{padding:70px 9%;text-align:center}
+.small{letter-spacing:3px;text-transform:uppercase;color:var(--deep);font-size:12px;font-weight:700}
+.cover h1{
+  font-family:"Playfair Display",serif;font-weight:600;
+  font-size:clamp(48px,8vw,92px);line-height:.95;
+  color:var(--deep);margin:25px 0 18px;
+}
+.cover h1 span{font-family:Pacifico;color:#c46f83;font-size:.58em}
+.cover p{max-width:600px;margin:0 auto 30px;line-height:1.9;color:#7d5b64}
+.flower{font-size:40px;color:#d47f91;letter-spacing:14px;margin:18px}
+.btn{
+  border:1px solid var(--deep);background:var(--deep);color:white;
+  border-radius:2px;padding:14px 24px;font-weight:700;cursor:pointer;
+  transition:.25s;box-shadow:5px 5px 0 #e4b5be;
+}
+.btn:hover{transform:translate(-2px,-2px);box-shadow:8px 8px 0 #e4b5be}
+.btn:disabled{
+  opacity:0.6; cursor:not-allowed; transform:none; box-shadow:none;
+}
+.outline{background:transparent;color:var(--deep);box-shadow:none}
+
+/* THÔNG TIN TRANG LỜI MỜI (PAGE 0) */
+.invitation-details {
+  margin: 25px 0;
+  padding: 20px;
+  border-top: 1px dashed var(--line);
+  border-bottom: 1px dashed var(--line);
+}
+.invitation-item {
+  margin: 12px 0;
+  font-size: 16px;
+  color: var(--deep);
+}
+.invitation-item strong {
+  display: block;
+  font-size: 13px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #c46f83;
+  margin-bottom: 4px;
+}
+
+/* THIẾT KẾ PASSCODE FORM */
+.passcode-form {
+  margin: 25px auto 10px;
+  max-width: 320px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: center;
+}
+.passcode-input-group {
+  display: flex;
+  gap: 10px;
+  width: 100%;
+  justify-content: center;
+}
+.passcode-input {
+  width: 180px;
+  padding: 12px 16px;
+  border: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.9);
+  color: var(--deep);
+  font-family: inherit;
+  font-size: 18px;
+  letter-spacing: 4px;
+  text-align: center;
+  border-radius: 4px;
+  outline: none;
+  transition: all 0.25s ease;
+  box-shadow: inset 0 2px 4px rgba(0,0,0,0.03);
+}
+.passcode-input:focus {
+  border-color: #c46f83;
+  box-shadow: 0 0 0 3px rgba(229, 139, 158, 0.25);
+}
+.passcode-error {
+  color: #d9534f;
+  font-size: 13px;
+  min-height: 20px;
+  font-weight: 500;
+  transition: opacity 0.2s ease;
+}
+
+.art-wrap{width:min(720px,100%);margin:0 auto 30px;position:relative}
+.art-wrap img{width:100%;display:block;border:1px solid #b47b87;box-shadow:0 14px 35px #7e4a5818}
+.caption{
+  text-align:center;font-family:"Playfair Display",serif;
+  font-size:20px;color:var(--deep);margin:18px 0 28px;
+}
+.story{
+  width:min(820px,100%);text-align:center;
+}
+.story h2,.reader h2,.final h2{
+  font-family:"Playfair Display",serif;color:var(--deep);
+  font-size:clamp(34px,5vw,56px);margin:0 0 18px;
+}
+.story .letter{
+  width:min(690px,100%);margin:25px auto;padding:34px 38px;
+  text-align:left;background:#fffaf8;border:1px solid #e4c0c6;
+  line-height:1.95;box-shadow:0 12px 35px #7e4a5810;
+}
+.dropcap:first-letter{font-family:"Playfair Display",serif;font-size:55px;float:left;line-height:.8;color:#c46f83;padding-right:7px}
+.signature{margin-top:20px;text-align:right;color:#a45b6c;font-family:"Playfair Display",serif}
+
+.reader{width:min(850px,100%);text-align:center}
+.reader .intro{color:#80626b;margin:0 auto 30px;line-height:1.8}
+.comic{
+  background:#f1d4d8;padding:18px;
+  border:1px solid #c9909b;box-shadow:0 18px 50px #75445116;
+}
+.panel{
+  margin:0 auto 18px; background:white; position:relative;
+  overflow:hidden; border:1px solid #8f5965;
+}
+.panel:last-child{margin-bottom:0}
+.panel img{display:block;width:100%;height:auto}
+.panel-label{
+  position:absolute;top:12px;left:12px;background:#fff9;
+  padding:6px 10px;font-size:11px;letter-spacing:1px;color:#7a4c58;
+}
+.reading-note{
+  margin:28px auto 0;padding:18px 22px;max-width:680px;
+  background:#fffaf8;border-left:4px solid #c9798b;text-align:left;
+  line-height:1.8;color:#765862;
+}
+
+.final{text-align:center;width:min(780px,100%)}
+.final .heart{font-size:55px;color:#cf7184;margin-bottom:8px}
+.final p{line-height:1.9;color:#7d5b64}
+.choice{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:25px}
+.yes{background:#c86e82;border-color:#c86e82}
+.result{min-height:28px;color:#a24f65;font-weight:700;margin-top:20px}
+.back{border:0;background:none;color:#936c76;cursor:pointer;margin-top:14px}
+
+.nav{
+  position:fixed;z-index:20;bottom:22px;left:50%;transform:translateX(-50%);
+  display:flex;gap:7px;padding:8px 12px;background:#fff8f5e8;
+  border:1px solid #dfbcc3;backdrop-filter:blur(8px);
+}
+.nav button{
+  border:0;background:#dfbcc3;width:9px;height:9px;border-radius:20px;
+  padding:0;cursor:pointer;transition:.25s;
+}
+.nav button.active{width:30px;background:#a75a6d}
+.nav button.locked{opacity:0.4; cursor:not-allowed;}
+
+/* Popup khi chạm vào khung truyện */
+.story-popup{
+  position:fixed;inset:0;z-index:100;display:none;
+  align-items:center;justify-content:center;padding:24px;
+  background:rgba(74,39,48,.55);backdrop-filter:blur(7px);
+}
+.story-popup.show{display:flex;animation:popupIn .3s ease}
+@keyframes popupIn{from{opacity:0}.to{opacity:1}}
+.popup-box{
+  width:min(560px,100%);position:relative;padding:38px 34px;
+  background:#fff8f6;border:1px solid #c98d98;
+  box-shadow:0 25px 80px rgba(60,30,40,.25);
+  text-align:center;
+}
+.popup-box:before{
+  content:"";position:absolute;inset:9px;border:1px solid #e0b4bc;
+  pointer-events:none;
+}
+.popup-box .mini-heart{font-size:38px;color:#c86e82;margin-bottom:8px}
+.popup-box h3{
+  font-family:"Playfair Display",serif;color:#884b5b;
+  font-size:32px;margin:8px 0 15px;
+}
+.popup-box p{line-height:1.9;color:#765862;margin:0 auto 20px;max-width:450px}
+.close-popup{
+  border:1px solid #a75a6d;background:#a75a6d;color:#fff;
+  padding:11px 22px;cursor:pointer;font-weight:700;
+}
+.tap-hint{
+  margin-top:9px;font-size:11px;color:#a45b6c;letter-spacing:.4px;
+}
+
+/* ===== FLASHCARD STORY ===== */
+.flash-reader{width:min(900px,100%);text-align:center}
+.flash-progress{
+  width:min(520px,100%);display:flex;align-items:center;gap:12px;
+  justify-content:center;margin:4px auto 18px;color:#8d5d68;font-size:12px;font-weight:700;
+}
+.progress-line{height:4px;background:#ead0d5;border-radius:10px;flex:1;overflow:hidden}
+.progress-line i{display:block;height:100%;width:33.33%;background:#b9687b;transition:.35s}
+
+.flash-stage{
+  display:flex;align-items:center;justify-content:center;gap:18px;width:100%;
+}
+.flashcard{
+  width:min(760px,78vw);height:min(430px,58vh);min-height:300px;
+  perspective:1400px;cursor:pointer;outline:none;
+}
+.flash-inner{
+  width:100%;height:100%;position:relative;
+  transform-style:preserve-3d;transition:transform .7s cubic-bezier(.2,.75,.2,1);
+}
+.flashcard.flipped .flash-inner{transform:rotateY(180deg)}
+.flash-face{
+  position:absolute;inset:0;backface-visibility:hidden;
+  border:1px solid #bd7d8a;background:#fff8f6;
+  box-shadow:0 22px 55px rgba(91,48,61,.17);
+  overflow:hidden;
+}
+.flash-face:before{
+  content:"";position:absolute;inset:9px;border:1px solid #e0b4bc;
+  pointer-events:none;z-index:3;
+}
+.flash-front{padding:17px}
+.flash-front img{
+  width:100%;height:calc(100% - 36px);object-fit:cover;
+  display:block;filter:saturate(.88);
+}
+.card-number{
+  position:absolute;top:21px;left:23px;z-index:5;
+  padding:6px 10px;background:#fff8f5e8;border:1px solid #d39aa5;
+  color:#8b5261;font-size:11px;font-weight:700;letter-spacing:1px;
+}
+.tap-label{
+  position:absolute;bottom:19px;left:0;right:0;z-index:5;
+  color:#8b5261;font-size:10px;font-weight:700;letter-spacing:1.5px;
+  text-shadow:0 1px 3px white;
+}
+.flash-back{
+  transform:rotateY(180deg);display:flex;flex-direction:column;
+  align-items:center;justify-content:center;padding:55px 50px;
+}
+.flash-back .card-number{top:21px;left:23px}
+.back-symbol{font-size:42px;color:#c96f82;margin-bottom:8px}
+.back-chapter{font-size:11px;letter-spacing:2px;color:#a35b6c;font-weight:700}
+.flash-back h3{
+  font-family:"Playfair Display",serif;color:#884b5b;
+  font-size:32px;line-height:1.15;margin:18px 0;
+}
+.flash-back p{line-height:1.9;color:#765862;max-width:380px;white-space:pre-line}
+.arrow{
+  width:48px;height:48px;border-radius:50%;border:1px solid #c88c98;
+  background:#fff8f5;color:#985869;font-size:34px;line-height:1;
+  cursor:pointer;box-shadow:0 8px 20px #75445112;transition:.2s;z-index:4;
+}
+.arrow:hover{transform:scale(1.08);background:#a75a6d;color:white}
+.card-dots{display:flex;justify-content:center;gap:7px;margin:20px 0 2px}
+.card-dots button{
+  width:9px;height:9px;border:0;padding:0;border-radius:50%;
+  background:#ddc0c7;cursor:pointer;transition:.25s;
+}
+.card-dots button.selected{width:27px;border-radius:8px;background:#a75a6d}
+
+@media(max-width:650px){
+  .flash-stage{gap:6px}
+  .flashcard{width:min(680px,86vw);height:min(410px,58vh);min-height:300px}
+  .arrow{width:44px;height:44px;min-width:44px;font-size:30px}
+  .flash-back{padding:38px 45px}
+  .flash-back h3{font-size:27px}
+  .page{padding:45px 14px 90px}
+  .paper-card{border-left:0;border-right:0}
+  .cover{padding:55px 9%}
+  .story .letter{padding:25px}
+  .comic{padding:9px}
+}
+
+/* ===== HIỆU ỨNG TRANG TRÍ NHẸ ===== */
+.floating-decor{
+  position:fixed;inset:0;overflow:hidden;pointer-events:none;
+  z-index:0;
+}
+.float-item{
+  position:absolute;display:block;
+  color:#c9798b;opacity:.28;
+  font-family:"Playfair Display",serif;
+  text-shadow:0 2px 10px rgba(166,83,104,.12);
+  animation:floatAround 8s ease-in-out infinite;
+}
+.f1{left:7%;top:18%;font-size:25px;animation-duration:7s}
+.f2{left:16%;top:72%;font-size:16px;animation-duration:9s;animation-delay:-2s}
+.f3{left:28%;top:13%;font-size:18px;animation-duration:8s;animation-delay:-4s}
+.f4{left:42%;top:82%;font-size:28px;animation-duration:10s;animation-delay:-1s}
+.f5{right:8%;top:20%;font-size:27px;animation-duration:8s;animation-delay:-5s}
+.f6{right:18%;top:68%;font-size:17px;animation-duration:11s;animation-delay:-3s}
+.f7{right:31%;top:12%;font-size:32px;animation-duration:7s;animation-delay:-1s}
+.f8{right:5%;top:79%;font-size:20px;animation-duration:9s;animation-delay:-6s}
+.f9{left:4%;top:47%;font-size:15px;animation-duration:12s;animation-delay:-7s}
+.f10{right:43%;top:91%;font-size:21px;animation-duration:8s;animation-delay:-2s}
+
+@keyframes floatAround{
+  0%,100%{transform:translate3d(0,0,0) rotate(-4deg) scale(1)}
+  25%{transform:translate3d(9px,-14px,0) rotate(5deg) scale(1.04)}
+  50%{transform:translate3d(-5px,-25px,0) rotate(-3deg) scale(.96)}
+  75%{transform:translate3d(-12px,-10px,0) rotate(6deg) scale(1.03)}
+}
+
+.page{z-index:1}
+.nav{z-index:30}
+
+.flashcard{
+  transition:transform .25s ease, filter .25s ease;
+}
+.flashcard:hover{
+  filter:drop-shadow(0 25px 35px rgba(126,70,84,.12));
+}
+.arrow{
+  transition:transform .22s ease, background .22s ease, color .22s ease, box-shadow .22s ease;
+}
+.arrow:hover{
+  transform:translateY(-2px) scale(1.07);
+  box-shadow:0 11px 25px rgba(117,68,81,.16);
+}
+
+.card-dots button.selected{
+  animation:dotPulse 2.2s ease-in-out infinite;
+}
+@keyframes dotPulse{
+  0%,100%{box-shadow:0 0 0 0 rgba(167,90,109,.08)}
+  50%{box-shadow:0 0 0 5px rgba(167,90,109,.08)}
+}
+
+@media(prefers-reduced-motion:reduce){
+  .float-item,.card-dots button.selected{animation:none!important}
+  *{scroll-behavior:auto!important}
+}
+</style>
+</head>
+
+<body>
+
+<div class="floating-decor" aria-hidden="true">
+  <span class="float-item f1">♡</span>
+  <span class="float-item f2">✦</span>
+  <span class="float-item f3">♥</span>
+  <span class="float-item f4">✧</span>
+  <span class="float-item f5">♡</span>
+  <span class="float-item f6">✦</span>
+  <span class="float-item f7">·</span>
+  <span class="float-item f8">♥</span>
+  <span class="float-item f9">✧</span>
+  <span class="float-item f10">♡</span>
+</div>
+
+<main class="shell">
+
+<!-- TRANG 0: LỜI MỜI VÀ NHẬP PASSCODE -->
+<section class="page active" id="p0">
+  <div class="paper-card cover">
+    <div class="small">An Invitation · Lời mời đặc biệt</div>
+    <div class="flower">✦ ♥ ✦</div>
+    <h1>You are invited<br><span>to a special moment</span></h1>
+    
+    <div class="invitation-details">
+      <div class="invitation-item">
+        <strong>Thời gian</strong>
+        19:30 (Giờ Việt Nam)
+      </div>
+      <div class="invitation-item">
+        <strong>Địa điểm</strong>
+        Google Meet
+      </div>
+    </div>
+
+    <!-- KHU VỰC NHẬP PASSCODE -->
+    <div class="passcode-form">
+      <div class="small" style="font-size:11px; margin-bottom: 2px;">Nhập Passcode để xem nội dung</div>
+      <div class="passcode-input-group">
+        <input type="password" id="passcodeInput" class="passcode-input" placeholder="••••••" maxlength="6" onkeydown="handlePasscodeKey(event)" />
+        <button class="btn" onclick="submitPasscode()">Xác nhận</button>
+      </div>
+      <div class="passcode-error" id="passcodeError"></div>
+    </div>
+  </div>
+</section>
+
+<!-- TRANG 1: COVER -->
+<section class="page" id="p1">
+  <div class="paper-card cover">
+    <div class="small">A little love story · 08.10</div>
+    <div class="flower">✦ ♥ ✦</div>
+    <h1>Say yes<br><span>to being my world</span></h1>
+    <p>Một câu chuyện nhỏ về hai người, một bó hoa, và một lời tỏ tình</p>
+    <button class="btn" onclick="go(2)">Bắt đầu câu chuyện →</button>
+  </div>
+</section>
+
+<!-- TRANG 2: BỨC THƯ -->
+<section class="page" id="p2">
+  <div class="story">
+    <div class="small">Chapter I · Một điều muốn nói</div>
+    <h2>Nếu cậu đọc đến đây...</h2>
+    <div class="letter">
+      <p class="dropcap">Có lẽ cậu cũng đã nhận ra rồi. Mỗi khi ở cạnh cậu, mình luôn có một lý do để mỉm cười. Những cuộc trò chuyện tưởng như rất bình thường lại trở thành những khoảnh khắc mình muốn giữ thật lâu.</p>
+      <p>Mình không biết chính xác từ ngày nào cảm xúc này bắt đầu. Chỉ biết rằng mình đã quen với việc tìm cậu giữa đám đông, chờ tin nhắn của cậu, và nghĩ về cậu nhiều hơn một chút mỗi ngày.</p>
+      <p>Vậy nên hôm nay, mình muốn kể câu chuyện này theo cách đặc biệt nhất.</p>
+      <div class="signature">— Từ một người thật sự thích cậu ♡</div>
+    </div>
+    <button class="btn" onclick="go(3)">Đọc truyện →</button>
+  </div>
+</section>
+
+<!-- TRANG 3: FLASHCARD STORY -->
+<section class="page" id="p3">
+  <div class="reader flash-reader">
+    <div class="small">Chapter II · Flashcard story</div>
+    <h2>Chạm để lật từng câu chuyện</h2>
+    <p class="intro">
+      Mỗi tấm card là một mảnh nhỏ của câu chuyện.
+      <br>Card giữ bố cục <b>ngang như khung truyện ban đầu</b> — nhấn vào ảnh để lật mặt sau.
+    </p>
+
+    <div class="flash-progress">
+      <span id="cardCount">1 / 3</span>
+      <div class="progress-line"><i id="progressLine"></i></div>
+    </div>
+
+    <div class="flash-stage">
+      <button type="button" class="arrow left" id="prevCardBtn" aria-label="Thẻ trước">‹</button>
+
+      <div class="flashcard" id="flashcard" onclick="flipCard()" tabindex="0" role="button" aria-label="Nhấn để lật thẻ">
+        <div class="flash-inner">
+          <div class="flash-face flash-front">
+            <div class="card-number" id="frontNumber">01</div>
+            <img id="flashImage" src="panel-1.jpg" alt="Khung truyện">
+            <div class="tap-label">♡ NHẤN ĐỂ LẬT</div>
+          </div>
+
+          <div class="flash-face flash-back">
+            <div class="back-symbol">♥</div>
+            <div class="card-number" id="backNumber">01</div>
+            <div class="back-chapter" id="backChapter">MỘT ĐIỀU NHỎ</div>
+            <h3 id="backTitle">Lần đầu mình nhận ra...</h3>
+            <p id="backText">
+              Có những khoảnh khắc rất bình thường,
+              nhưng chỉ cần có cậu ở đó thì mình lại nhớ mãi.
+            </p>
+            <div class="tap-label">♡ NHẤN ĐỂ XEM ẢNH</div>
+          </div>
+        </div>
+      </div>
+
+      <button type="button" class="arrow right" id="nextCardBtn" aria-label="Thẻ tiếp theo">›</button>
+    </div>
+
+    <div class="card-dots" id="cardDots">
+      <button class="selected" onclick="showCard(0)"></button>
+      <button onclick="showCard(1)"></button>
+      <button onclick="showCard(2)"></button>
+    </div>
+
+    <div class="reading-note">
+      <b>💌 Cách đọc:</b> Nhấn card để lật → đọc lời nhắn →
+      <b>nhấn thêm lần nữa để sang ảnh tiếp theo</b>, hoặc dùng mũi tên.
+    </div>
+
+    <br>
+    <button class="btn" onclick="go(4)">Đến lời tỏ tình →</button>
+  </div>
+</section>
+
+<!-- TRANG 4: KẾT THÚC -->
+<section class="page" id="p4">
+  <div class="final">
+    <div class="heart">♥</div>
+    <div class="small">The last page · Trang cuối</div>
+    <h2>Mình thích cậu.</h2>
+    <p>
+      Không phải một chút rung động thoáng qua.<br>
+      Mình thật sự muốn ở bên cậu, cùng cậu đi qua những ngày bình thường
+      và biến chúng thành những kỷ niệm thật đẹp.
+    </p>
+    <p><b>Cậu có đồng ý trở thành một phần trong thế giới của mình không?</b></p>
+
+    <div class="choice">
+      <button class="btn yes" onclick="accept()">💗 Say yes</button>
+      <button class="btn outline" id="maybe" onmouseenter="escapeBtn()">Cho mình suy nghĩ thêm 😳</button>
+    </div>
+    <div class="result" id="result"></div>
+    <button class="back" onclick="go(0)">↺ Quay về trang thiệp mời</button>
+  </div>
+</section>
+
+</main>
+
+<nav class="nav" aria-label="Điều hướng">
+  <button class="active" onclick="go(0)"></button>
+  <button id="nav-1" class="locked" onclick="go(1)"></button>
+  <button id="nav-2" class="locked" onclick="go(2)"></button>
+  <button id="nav-3" class="locked" onclick="go(3)"></button>
+  <button id="nav-4" class="locked" onclick="go(4)"></button>
+</nav>
+
+<!-- Popup -->
+<div class="story-popup" id="storyPopup" onclick="closeStoryPopup(event)">
+  <div class="popup-box">
+    <div class="mini-heart">♥</div>
+    <h3>Một bí mật nhỏ...</h3>
+    <p>
+      Nếu cậu nhìn thật kỹ vào khung hình đầu tiên,
+      cậu sẽ thấy đây không chỉ là một bức tranh.
+      Nó là cách mình muốn nói rằng:
+      <b>“Mình muốn được ở cạnh cậu, không chỉ trong một khoảnh khắc,
+      mà trong thật nhiều câu chuyện về sau.”</b>
+    </p>
+    <button class="close-popup" onclick="closeStoryPopup()">Đóng lại ♡</button>
+  </div>
+</div>
+
+<script>
+const CORRECT_PASSCODE = "040825";
+let isUnlocked = false;
+
+// Xử lý xác nhận Passcode
+function submitPasscode() {
+  const input = document.getElementById('passcodeInput');
+  const errorMsg = document.getElementById('passcodeError');
+  const val = input.value.trim();
+
+  if (val === CORRECT_PASSCODE) {
+    isUnlocked = true;
+    errorMsg.textContent = "";
+    
+    // Mở khóa các nút chuyển trang trên thanh nav
+    for (let i = 1; i <= 4; i++) {
+      const navBtn = document.getElementById(`nav-${i}`);
+      if(navBtn) navBtn.classList.remove('locked');
+    }
+    
+    // Tự động chuyển qua trang 1
+    go(1);
+  } else {
+    errorMsg.textContent = "Passcode không đúng rồi, thử lại xem nhé! 💗";
+    input.focus();
+    input.select();
+  }
+}
+
+// Bấm phím Enter ở ô Passcode để gửi
+function handlePasscodeKey(e) {
+  if (e.key === 'Enter') {
+    submitPasscode();
+  }
+}
+
+function go(n){
+  if (n > 0 && !isUnlocked) {
+    const errorMsg = document.getElementById('passcodeError');
+    if (errorMsg) errorMsg.textContent = "Hãy nhập đúng Passcode để xem trang này nhé! 🔒";
+    return;
+  }
+  document.querySelectorAll('.page').forEach((p,i)=>p.classList.toggle('active',i===n));
+  document.querySelectorAll('.nav button').forEach((b,i)=>b.classList.toggle('active',i===n));
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+const flashCards = [
+  {
+    image:"panel-1.jpg", number:"01", chapter:"MỘT ĐIỀU NHỎ",
+    title:"Lần đầu mình nhận ra...",
+    text:"Có những khoảnh khắc rất bình thường,\nhưng chỉ cần có cậu ở đó thì mình lại nhớ mãi."
+  },
+  {
+    image:"panel-2.jpg", number:"02", chapter:"KHOẢNH KHẮC",
+    title:"Mình thích cậu từ lúc nào?",
+    text:"Có lẽ là từ những lần cậu cười,\ntừ những cuộc trò chuyện kéo dài hơn dự định,\nvà từ cảm giác mình luôn muốn ở cạnh cậu thêm một chút."
+  },
+  {
+    image:"panel-3.jpg", number:"03", chapter:"ĐIỀU MUỐN NÓI",
+    title:"Nếu cậu đồng ý...",
+    text:"Mình muốn cùng cậu viết tiếp câu chuyện này.\nKhông cần điều gì quá lớn lao,\nchỉ cần mỗi ngày đều có một chút hạnh phúc của chúng mình."
+  }
+];
+let currentCard = 0;
+
+function showCard(index){
+  currentCard = (index + flashCards.length) % flashCards.length;
+  const c = flashCards[currentCard];
+  const card = document.getElementById('flashcard');
+  card.classList.remove('flipped');
+  document.getElementById('flashImage').src = c.image;
+  document.getElementById('flashImage').alt = 'Khung truyện ' + c.number;
+  document.getElementById('frontNumber').textContent = c.number;
+  document.getElementById('backNumber').textContent = c.number;
+  document.getElementById('backChapter').textContent = c.chapter;
+  document.getElementById('backTitle').textContent = c.title;
+  document.getElementById('backText').textContent = c.text;
+  document.getElementById('cardCount').textContent = c.number + ' / ' + flashCards.length;
+  document.getElementById('progressLine').style.width =
+    ((currentCard + 1) / flashCards.length * 100) + '%';
+  document.querySelectorAll('.card-dots button').forEach((b,i)=>{
+    b.classList.toggle('selected', i === currentCard);
+  });
+}
+function flipCard(){
+  const card = document.getElementById('flashcard');
+  if(card.classList.contains('flipped')){
+    nextCard();
+  }else{
+    card.classList.add('flipped');
+  }
+}
+function nextCard(){
+  showCard(currentCard + 1);
+}
+function prevCard(){
+  showCard(currentCard - 1);
+}
+
+document.getElementById('nextCardBtn').addEventListener('click', function(e){
+  e.preventDefault();
+  e.stopPropagation();
+  nextCard();
+});
+document.getElementById('prevCardBtn').addEventListener('click', function(e){
+  e.preventDefault();
+  e.stopPropagation();
+  prevCard();
+});
+
+showCard(0);
+
+document.addEventListener('keydown',function(e){
+  const page = document.getElementById('p3');
+  if(!page.classList.contains('active')) return;
+  if(e.key==='ArrowRight') nextCard();
+  if(e.key==='ArrowLeft') prevCard();
+  if(e.key==='Enter' || e.key===' ') {
+    if(document.activeElement === document.getElementById('flashcard')){
+      e.preventDefault(); flipCard();
+    }
+  }
+});
+
+function accept(){
+  document.getElementById('result').textContent='💗 Vậy thì từ hôm nay, mình cùng viết tiếp câu chuyện này nhé.';
+  for(let i=0;i<20;i++){
+    const h=document.createElement('span');
+    h.textContent=['♥','✦','♡'][Math.floor(Math.random()*3)];
+    h.style.cssText=`position:fixed;left:${Math.random()*100}vw;top:105vh;color:#c86e82;font-size:${16+Math.random()*25}px;z-index:99;transition:2.7s ease;`;
+    document.body.appendChild(h);
+    requestAnimationFrame(()=>h.style.transform=`translateY(-120vh) rotate(${Math.random()*360}deg)`);
+    setTimeout(()=>h.remove(),2800);
+  }
+}
+function escapeBtn(){
+  const b=document.getElementById('maybe');
+  b.style.transform=`translate(${Math.random()*180-90}px,${Math.random()*100-50}px)`;
+}
+</script>
+</body>
+</html>
