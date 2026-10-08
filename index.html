@@ -437,26 +437,23 @@ body:after{right:3%;bottom:12%;font-size:130px}
 <!-- TRANG 2: BỨC THƯ -->
 <section class="page" id="p2">
   <div class="story">
-    <div class="small">Chapter I · Một điều muốn nói</div>
-    <h2>Nếu cậu đọc đến đây...</h2>
+    <div class="small"> Một điều muốn nói</div>
+    <h2>Nếu em đọc đến đây...</h2>
     <div class="letter">
-      <p class="dropcap">Có lẽ cậu cũng đã nhận ra rồi. Mỗi khi ở cạnh cậu, mình luôn có một lý do để mỉm cười. Những cuộc trò chuyện tưởng như rất bình thường lại trở thành những khoảnh khắc mình muốn giữ thật lâu.</p>
-      <p>Mình không biết chính xác từ ngày nào cảm xúc này bắt đầu. Chỉ biết rằng mình đã quen với việc tìm cậu giữa đám đông, chờ tin nhắn của cậu, và nghĩ về cậu nhiều hơn một chút mỗi ngày.</p>
-      <p>Vậy nên hôm nay, mình muốn kể câu chuyện này theo cách đặc biệt nhất.</p>
-      <div class="signature">— Từ một người thật sự thích cậu ♡</div>
+      <p class="dropcap">Nếu ngày hôm đó em không chủ động kết bạn với anh và anh không mê trai thì có lẽ anh đã bỏ lỡ mất một người rất quan trọng trong cuộc đời này...</p>
+      <div class="signature">— Từ một người thật sự thích em hơn tất cả ♡</div>
     </div>
-    <button class="btn" onclick="go(3)">Đọc truyện →</button>
+    <button class="btn" onclick="go(3)">Tiếp tục →</button>
   </div>
 </section>
 
 <!-- TRANG 3: FLASHCARD STORY -->
 <section class="page" id="p3">
   <div class="reader flash-reader">
-    <div class="small">Chapter II · Flashcard story</div>
-    <h2>Chạm để lật từng câu chuyện</h2>
+    <div class="small">Hành trình</div>
+    <h2>Chạm để lật từng hình ảnh</h2>
     <p class="intro">
-      Mỗi tấm card là một mảnh nhỏ của câu chuyện.
-      <br>Card giữ bố cục <b>ngang như khung truyện ban đầu</b> — nhấn vào ảnh để lật mặt sau.
+      Mỗi tấm card là một mảnh tâm tư, một mong ước.
     </p>
 
     <div class="flash-progress">
@@ -479,10 +476,11 @@ body:after{right:3%;bottom:12%;font-size:130px}
             <div class="back-symbol">♥</div>
             <div class="card-number" id="backNumber">01</div>
             <div class="back-chapter" id="backChapter">MỘT ĐIỀU NHỎ</div>
-            <h3 id="backTitle">Lần đầu mình nhận ra...</h3>
+            <h3 id="backTitle">Lần đầu anh nhận ra...</h3>
             <p id="backText">
-              Có những khoảnh khắc rất bình thường,
-              nhưng chỉ cần có cậu ở đó thì mình lại nhớ mãi.
+              Ở trong một mối quan hệ mà anh cảm thấy an toàn... Đôi khi nghĩ đây là mơ...
+              Và em ơi, em có nhớ rằng bài hát hôm qua mình cùng nghe không "Have I known you twenty seconds or twenty years?".
+              Anh nghĩ là cho dù chúng ta chỉ mới biết nhau 27 ngày, nhưng có lẽ nhưng điều anh kể cho em nghe có thể còn nhiều hơn những mối quan hệ trước đây anh đã có...
             </p>
             <div class="tap-label">♡ NHẤN ĐỂ XEM ẢNH</div>
           </div>
@@ -513,17 +511,16 @@ body:after{right:3%;bottom:12%;font-size:130px}
   <div class="final">
     <div class="heart">♥</div>
     <div class="small">The last page · Trang cuối</div>
-    <h2>Mình thích cậu.</h2>
+    <h2>Anh yêu em.</h2>
     <p>
-      Không phải một chút rung động thoáng qua.<br>
-      Mình thật sự muốn ở bên cậu, cùng cậu đi qua những ngày bình thường
-      và biến chúng thành những kỷ niệm thật đẹp.
+      Anh nghĩ đây không phải là mơ. Đây là một sự thật phải không em?<br>
+      Gói dùng thử đã hết hạn, em có muốn cùng anh trải qua những điều phía trước không?
     </p>
-    <p><b>Cậu có đồng ý trở thành một phần trong thế giới của mình không?</b></p>
+    <p><b>Một cách chính thức, em có đồng ý trở thành một phần trong thế giới của anh không? (Say yes to being my world)</b></p>
 
     <div class="choice">
       <button class="btn yes" onclick="accept()">💗 Say yes</button>
-      <button class="btn outline" id="maybe" onmouseenter="escapeBtn()">Cho mình suy nghĩ thêm 😳</button>
+      <button class="btn outline" id="maybe" onmouseenter="escapeBtn()">Yesn't 😳</button>
     </div>
     <div class="result" id="result"></div>
     <button class="back" onclick="go(0)">↺ Quay về trang thiệp mời</button>
@@ -546,10 +543,10 @@ body:after{right:3%;bottom:12%;font-size:130px}
     <div class="mini-heart">♥</div>
     <h3>Một bí mật nhỏ...</h3>
     <p>
-      Nếu cậu nhìn thật kỹ vào khung hình đầu tiên,
-      cậu sẽ thấy đây không chỉ là một bức tranh.
-      Nó là cách mình muốn nói rằng:
-      <b>“Mình muốn được ở cạnh cậu, không chỉ trong một khoảnh khắc,
+      Nếu em nhìn thật kỹ vào khung hình đầu tiên,
+      em sẽ thấy đây không chỉ là một bức tranh.
+      Nó là cách anh muốn nói rằng:
+      <b>“Anh muốn được ở cạnh em, không chỉ trong một khoảnh khắc,
       mà trong thật nhiều câu chuyện về sau.”</b>
     </p>
     <button class="close-popup" onclick="closeStoryPopup()">Đóng lại ♡</button>
@@ -606,18 +603,18 @@ function go(n){
 const flashCards = [
   {
     image:"panel-1.jpg", number:"01", chapter:"MỘT ĐIỀU NHỎ",
-    title:"Lần đầu mình nhận ra...",
-    text:"Có những khoảnh khắc rất bình thường,\nhưng chỉ cần có cậu ở đó thì mình lại nhớ mãi."
+    title:"Lần đầu anh nhận ra...",
+    text:" Ở trong một mối quan hệ mà anh cảm thấy an toàn... Đôi khi nghĩ đây là mơ...\nVà em ơi, em có nhớ rằng bài hát hôm qua mình cùng nghe không \"Have I known you twenty seconds or twenty years?\".Anh nghĩ là cho dù chúng ta chỉ mới biết nhau 27 ngày, nhưng có lẽ nhưng điều anh kể cho em nghe có thể còn nhiều hơn những mối quan hệ trước đây anh đã có..."
   },
   {
     image:"panel-2.jpg", number:"02", chapter:"KHOẢNH KHẮC",
-    title:"Mình thích cậu từ lúc nào?",
-    text:"Có lẽ là từ những lần cậu cười,\ntừ những cuộc trò chuyện kéo dài hơn dự định,\nvà từ cảm giác mình luôn muốn ở cạnh cậu thêm một chút."
+    title:"Anh thích em từ lúc nào?",
+    text:"Anh cũng không nhớ nữa... Anh chỉ nhớ là hôm đầu tiên chúng ta gặp nhau qua Meet. Hôm đó anh cuống cuồng phải tìm cách mở camera với em khi chưa thật sự sẵn sàng cho việc thấy mặt em vào lúc đó... Anh nhớ là em luôn là người mở đầu câu chuyện với anh. Chúng ta bắt đầu bằng một câu chuyện không giống như các cuộc date anh từng đi- đó là chuyện em đi học đội tuyển, thi cử ở trường... em nhớ không? "
   },
   {
     image:"panel-3.jpg", number:"03", chapter:"ĐIỀU MUỐN NÓI",
-    title:"Nếu cậu đồng ý...",
-    text:"Mình muốn cùng cậu viết tiếp câu chuyện này.\nKhông cần điều gì quá lớn lao,\nchỉ cần mỗi ngày đều có một chút hạnh phúc của chúng mình."
+    title:"Một giấc mơ...",
+    text:"Anh không biết tương lai sẽ ra sau. Nhưng có một điều quan trọng ở hiện tại đó là anh muốn là một phần của em. Phải chẳng em cũng từng thấy rằng chúng ta sẽ cùng nắm tay nhau sao?"
   }
 ];
 let currentCard = 0;
@@ -682,7 +679,7 @@ document.addEventListener('keydown',function(e){
 });
 
 function accept(){
-  document.getElementById('result').textContent='💗 Vậy thì từ hôm nay, mình cùng viết tiếp câu chuyện này nhé.';
+  document.getElementById('result').textContent='💗 Vậy thì từ hôm nay, chúng mình cùng viết tiếp câu chuyện này nhé.';
   for(let i=0;i<20;i++){
     const h=document.createElement('span');
     h.textContent=['♥','✦','♡'][Math.floor(Math.random()*3)];
